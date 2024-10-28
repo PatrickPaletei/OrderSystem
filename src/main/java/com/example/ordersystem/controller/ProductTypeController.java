@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/v1/product-type")
+@RequestMapping("api/v1/product-types")
 @Tag(name = "Product Type API")
 public class ProductTypeController {
     private final ProductTypeService productTypeService;
@@ -28,15 +28,14 @@ public class ProductTypeController {
 
     @PostMapping("{product-name}")
     ResponseEntity<BaseResponse<Any>> addProductType(@PathVariable("product-name") String productname) {
+        BaseResponse<Any> response = new BaseResponse<>();
         if (productname.isEmpty()) {
-            BaseResponse<Any> response = new BaseResponse<>();
             response.setStatus("F");
             response.setMessage("Product name must not be empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
         MstProductType existProductType = productTypeRepository.findByProductTypeIgnoreCase(productname);
         if (existProductType != null) {
-            BaseResponse<Any> response = new BaseResponse<>();
             response.setStatus("F");
             response.setMessage("Product name already exist");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
@@ -51,15 +50,14 @@ public class ProductTypeController {
 
     @PutMapping
     ResponseEntity<BaseResponse<Any>> updateProductType(@RequestBody UpdateProductTypeRequest productType) {
+        BaseResponse<Any> response = new BaseResponse<>();
         if (productType.getProductTypeId() == null) {
-            BaseResponse<Any> response = new BaseResponse<>();
             response.setStatus("F");
             response.setMessage("Product type id must not be empty");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
         }
         Optional<MstProductType> optionalProductType = productTypeRepository.findById(productType.getProductTypeId());
         if (optionalProductType.isEmpty()) {
-            BaseResponse<Any> response = new BaseResponse<>();
             response.setStatus("F");
             response.setMessage("Product type not found");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
@@ -67,7 +65,6 @@ public class ProductTypeController {
         MstProductType existProductType = optionalProductType.get();
         if (productType.getProductType() != null) {
             if (existProductType.getProductType().equals(productType.getProductType())){
-                BaseResponse<Any> response = new BaseResponse<>();
                 response.setStatus("F");
                 response.setMessage("Product type is the same!");
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
