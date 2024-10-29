@@ -8,7 +8,6 @@ import com.example.ordersystem.entity.MstProductType;
 import org.hibernate.mapping.Any;
 import org.springframework.http.ResponseEntity;
 
-import java.util.List;
 
 public interface ProductService {
     ResponseEntity<BaseResponse<Any>> addProduct(AddProductRequest newProduct, MstProductType productType);

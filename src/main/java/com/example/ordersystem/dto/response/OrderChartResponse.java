@@ -1,13 +1,13 @@
 package com.example.ordersystem.dto.response;
 
-import com.example.ordersystem.entity.MstProduct;
+import com.example.ordersystem.entity.MstOrderCart;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class ProductResponse {
-    private List<MstProduct> listProducts;
+public class OrderChartResponse {
+    private List<MstOrderCart> listOrderCarts;
     private int pageNum;
     private int pageSize;
     private long totalElements;

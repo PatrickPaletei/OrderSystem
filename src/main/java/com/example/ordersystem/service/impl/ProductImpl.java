@@ -35,7 +35,7 @@ public class ProductImpl implements ProductService {
         mstProduct.setPrice(newProduct.getPrice());
         productRepository.save(mstProduct);
         BaseResponse<Any> response = new BaseResponse<>();
-        response.setMessage("Status " + newProduct.getProductName() + " added successfully");
+        response.setMessage("Product " + newProduct.getProductName() + " added successfully");
         return ResponseEntity.ok(response);
     }
 
@@ -44,6 +44,7 @@ public class ProductImpl implements ProductService {
         Pageable pageable = PageRequest.of(pageNo, pageSize);
         Page<MstProduct> products = productRepository.findAll(pageable);
         List<MstProduct> productList = products.getContent();
+
         BaseResponse<ProductResponse> response = new BaseResponse<>();
         ProductResponse productResponse = new ProductResponse();
         productResponse.setListProducts(productList);
@@ -52,7 +53,8 @@ public class ProductImpl implements ProductService {
         productResponse.setTotalElements(products.getTotalElements());
         productResponse.setTotalPages(products.getTotalPages());
         productResponse.setLast(products.isLast());
-        response.setMessage("Status " + products.getTotalElements() + " Successfully retrived");
+
+        response.setMessage("Product " + products.getTotalElements() + " Successfully retrived");
         response.setData(productResponse);
         return ResponseEntity.ok(response);
     }
@@ -66,7 +68,7 @@ public class ProductImpl implements ProductService {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         }
         MstProduct mstProduct = product.get();
-        response.setMessage("Status " + mstProduct + " found successfully");
+        response.setMessage("Product " + mstProduct + " found successfully");
         response.setData(mstProduct);
         return ResponseEntity.ok(response);
     }
@@ -91,7 +93,7 @@ public class ProductImpl implements ProductService {
         }
         MstProduct updatedMstProduct = productRepository.save(existProduct);
         BaseResponse<Any> response = new BaseResponse<>();
-        response.setMessage("Status " + updatedMstProduct.getProductName() + " updated successfully");
+        response.setMessage("Product " + updatedMstProduct.getProductName() + " updated successfully");
         return ResponseEntity.ok(response);
     }
 
@@ -99,7 +101,7 @@ public class ProductImpl implements ProductService {
     public ResponseEntity<BaseResponse<Any>> deleteProduct(Integer idProduct) {
         productRepository.deleteById(idProduct);
         BaseResponse<Any> response = new BaseResponse<>();
-        response.setMessage("Status " + idProduct + " deleted successfully");
+        response.setMessage("Product " + idProduct + " deleted successfully");
         return ResponseEntity.ok(response);
     }
 }

@@ -14,7 +14,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -107,8 +106,8 @@ public class ProductController {
 
     }
 
-    @DeleteMapping("{id_product}")
-    ResponseEntity<BaseResponse<Any>> deleteProduct(@PathVariable("id_product") Integer productId) {
+    @DeleteMapping("{id-product}")
+    ResponseEntity<BaseResponse<Any>> deleteProduct(@PathVariable("id-product") Integer productId) {
         BaseResponse<Any> response = new BaseResponse<>();
         if (productId == null) {
             response.setStatus("F");

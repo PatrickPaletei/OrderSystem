@@ -18,11 +18,11 @@ public class MstOrderCart {
 
     @ManyToOne
     @JoinColumn(name = "id_product", nullable = false, foreignKey = @ForeignKey(name = "FK_ID_PRODUCT"))
-    private MstProduct mstProduct;
+    private MstProduct idProduct;
 
     @ManyToOne
     @JoinColumn(name = "id_user", nullable = false, foreignKey = @ForeignKey(name = "FK_ID_USER"))
-    private MstUser mstUser;
+    private MstUser idUser;
 
     @Column(name = "date")
     private Date date;
