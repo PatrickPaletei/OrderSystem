@@ -2,13 +2,11 @@ package com.example.ordersystem.entity;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.util.Date;
 
-@Setter
-@Getter
+@Data
 @Entity
 @Table(name="mst_order_cart")
 public class MstOrderCart {

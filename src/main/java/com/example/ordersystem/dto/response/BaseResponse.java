@@ -1,12 +1,8 @@
 package com.example.ordersystem.dto.response;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
-@NoArgsConstructor
-@Getter
-@Setter
+@Data
 public class BaseResponse<T> {
     private String status = "T";
     private String message = "";

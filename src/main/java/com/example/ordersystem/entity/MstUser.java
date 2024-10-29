@@ -1,11 +1,9 @@
 package com.example.ordersystem.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Setter
-@Getter
+@Data
 @Entity
 @Table(name="mst_user")
 public class MstUser {

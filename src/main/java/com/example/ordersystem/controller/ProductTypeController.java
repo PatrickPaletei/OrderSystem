@@ -75,9 +75,14 @@ public class ProductTypeController {
 
     @DeleteMapping("{id-product-type}")
     ResponseEntity<BaseResponse<Any>> deleteProductType(@PathVariable("id-product-type") Integer idproducttype) {
+        BaseResponse<Any> response = new BaseResponse<>();
+        if (idproducttype == null) {
+            response.setStatus("F");
+            response.setMessage("Product type id must not be empty");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+        }
         Optional<MstProductType> existProductType = productTypeRepository.findById(idproducttype);
         if (existProductType.isEmpty()) {
-            BaseResponse<Any> response = new BaseResponse<>();
             response.setStatus("F");
             response.setMessage("Product type not found");
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);

@@ -1,13 +1,9 @@
 package com.example.ordersystem.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
-@NoArgsConstructor
-@Setter
-@Getter
+@Data
 @Entity
 @Table(name="mst_product_type")
 public class MstProductType {
